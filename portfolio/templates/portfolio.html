@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    
+    <div class="card" style="width: 18rem;">
+        <img src="{% static '나이키.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+        </div>
+    </div>
+    {% for portfolio in portfolios.all %}
+    <div class="card" style="width: 18rem; display: inline-block;">
+        <img src="{{ portfolio.image.url }}" class="card-img-top" alt="..." width="200" height="150">
+        <div class="card-body">
+            <h4>{{portfolio.title}}</h4>
+            <p class="card-text">{{portfolio.description}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+    <button type = "button" class="btn btn-primary" onclick="location.href='/portfolio/upload'">이미지 추가</button>
+</body>
+</html>
